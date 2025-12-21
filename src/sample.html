@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <title>Template validation</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
 
@@ -38,7 +39,7 @@
         }
 
         .beon-container {
-            border: 1px dotted red;
+            border: none;
         }
 
         .beon-showcase__item-references {
@@ -1966,13 +1967,39 @@
     <script type="module">
         var slider = tns({
             container: '.beon-showcase__items-wrapper',
-            items: 4,
-            slideBy: 'page',
-            autoplay: false
+            items: 6,
+            slideBy: 6,
+            autoplay: false,
+            nav: true,
+            navPosition: 'bottom',
+            controls: true,
+            controlsPosition: 'top',
+            mouseDrag: true,
+            swipeAngle: false,
+            speed: 400,
+            gutter: 15,
+            responsive: {
+                0: {
+                    items: 2,
+                    slideBy: 2,
+                    gutter: 10
+                },
+                768: {
+                    items: 4,
+                    slideBy: 4,
+                    gutter: 15
+                },
+                1024: {
+                    items: 6,
+                    slideBy: 6,
+                    gutter: 15
+                }
+            }
         });
 
         console.log(slider)
   </script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>

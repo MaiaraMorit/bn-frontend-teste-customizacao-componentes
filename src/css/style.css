@@ -1,0 +1,181 @@
+body {
+  background-color: #f3f3f3;
+  font-family: "Montserrat", sans-serif;
+}
+
+.beon-showcase {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.beon-showcase__head {
+  margin-bottom: 20px;
+}
+.beon-showcase__head .beon-showcase__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.beon-slider__frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.beon-showcase__items-wrapper {
+  display: flex;
+}
+
+.beon-showcase__item {
+  background-color: #ffffff;
+  border: 1px solid #90caf9;
+  border-radius: 2px;
+  padding: 15px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.beon-showcase__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.beon-showcase__item-image {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.beon-showcase__item-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+.beon-showcase__item-title {
+  margin-bottom: 10px;
+}
+.beon-showcase__item-title h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+.beon-showcase__item-title h3 a {
+  color: #333;
+  text-decoration: none;
+}
+.beon-showcase__item-title h3 a:hover {
+  color: #1976d2;
+}
+
+.beon-showcase__item-price-box {
+  margin-top: 10px;
+}
+.beon-showcase__item-price-box .beon-showcase__price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1976d2;
+}
+.beon-showcase__item-price-box .beon-showcase__price .currency {
+  font-size: 16px;
+}
+.beon-showcase__item-price-box .beon-showcase__item-installments {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+  display: block;
+}
+
+.tns-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px 0;
+}
+.tns-nav button {
+  width: 40px;
+  height: 6px;
+  background-color: #b0bec5;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 0;
+}
+.tns-nav button:hover {
+  background-color: #78909c;
+}
+.tns-nav button.tns-nav-active {
+  background-color: #1976d2;
+  width: 50px;
+}
+
+.tns-controls button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(144, 202, 249, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  opacity: 0.6;
+  color: #333;
+  font-size: 0;
+}
+.tns-controls button:hover {
+  background-color: rgba(255, 255, 255, 1);
+  border-color: #90caf9;
+  opacity: 1;
+}
+.tns-controls button[data-controls=prev] {
+  left: 10px;
+}
+.tns-controls button[data-controls=prev]::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  margin-left: 3px;
+}
+.tns-controls button[data-controls=next] {
+  right: 10px;
+}
+.tns-controls button[data-controls=next]::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  transform: rotate(45deg);
+  margin-right: 3px;
+}
+
+@media (max-width: 768px) {
+  .beon-showcase {
+    padding: 15px;
+  }
+  .beon-showcase__item {
+    padding: 10px;
+  }
+  .tns-controls button {
+    width: 35px;
+    height: 35px;
+  }
+}

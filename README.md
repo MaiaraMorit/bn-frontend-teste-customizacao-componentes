@@ -52,3 +52,26 @@ Concentre-se e faça seu melhor. Estamos ansiosos para receber seu projeto!
 ### Um adendo sobre o uso de IA
 
 Sabemos que IA pode resolver bastante coisa, e provavelmente faria esse trabalho por você em poucos minutos. Não é proibido o uso de IA, desde que você deixe explícito onde e como utilizou essas ferramentas. No entanto, lembre-se: não é só seu código que será avaliado, e usar IA não te permitirá mostrar qualidades importantes de um programador e que são importantes para nós, como: entender e resolver problemas, propor soluções criativas e otimizadas, extrapolar o escopo com foco no objetivo final.
+
+
+
+## Como iniciar o projeto
+
+Para iniciar o projeto, execute os seguintes comandos:
+
+1. Instale as dependências:
+```
+npm install
+```
+
+2. Execute o SASS para compilar os estilos (deixe este terminal aberto):
+```
+npm run sass
+```
+
+3. Em outro terminal, inicie o servidor de desenvolvimento para visualizar no navegador:
+```
+npm run dev
+```
+
+O projeto estará disponível no navegador através do servidor local iniciado pelo `live-server`.
