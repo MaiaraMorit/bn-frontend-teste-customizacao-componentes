@@ -1,0 +1,32 @@
+@media (max-width: 768px) {
+  .beon-showcase {
+    padding: 15px;
+  }
+  
+  .beon-showcase__head {
+    margin-bottom: 20px;
+    
+    .beon-showcase__head-inner {
+      padding: 12px 16px;
+      gap: 8px;
+      
+      &::before {
+        font-size: 18px;
+      }
+    }
+    
+    .beon-showcase__title {
+      font-size: 16px;
+    }
+  }
+  
+  .beon-showcase__item {
+    padding: 10px;
+  }
+  
+  .tns-controls button {
+    width: 35px;
+    height: 35px;
+  }
+}
+
