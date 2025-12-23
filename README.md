@@ -75,3 +75,32 @@ npm run dev
 ```
 
 O projeto estará disponível no navegador através do servidor local iniciado pelo `live-server`.
+
+## Resultado Esperado
+
+Abaixo está uma captura de tela mostrando como o projeto ficou após a implementação:
+
+![Resultado do Projeto](./referencias/image.png)
+
+### Descrição do Resultado
+
+O projeto implementa um carousel de produtos com o título "Outras pessoas estão comprando", exibindo cards de produtos com as seguintes características:
+
+- **Cards de Produtos**: Cada card exibe a imagem do produto, nome, avaliação com estrelas, número de reviews, preço e opção de parcelamento
+- **Sistema de Favoritos**: Ícone de coração em cada produto para adicionar/remover dos favoritos
+- **Tags de Desconto**: Produtos em promoção exibem uma tag verde com a porcentagem de desconto
+- **Navegação**: Setas laterais para navegar entre os produtos e indicadores de paginação abaixo do carousel
+- **Design Responsivo**: Layout adaptável que mantém a qualidade visual em diferentes tamanhos de tela
+
+## Funcionalidades Implementadas
+
+### Sistema de Favoritos com LocalStorage
+
+O projeto inclui um sistema de favoritos que utiliza o `localStorage` do navegador para persistir as preferências do usuário:
+
+- **Persistência**: Os produtos favoritados são salvos automaticamente no `localStorage` do navegador
+- **Chave de armazenamento**: `'wishlist'` - armazena um array de IDs dos produtos favoritados
+- **Comportamento**: 
+  - Ao clicar no coração de um produto, ele é adicionado/removido da lista de favoritos
+  - O estado visual do coração (ativo/inativo) é mantido mesmo após recarregar a página
+  - Os favoritos são específicos por navegador e dispositivo
