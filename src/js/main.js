@@ -1,72 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('Main.js loaded');
-
-    const WISHLIST_STORAGE_KEY = 'wishlist';
-
-    /**
-     * Get wishlist from LocalStorage
-     * @returns {Array<string>} Array of IDs of the wishlist
-     */
-    function getWishlist() {
-        const wishlistJson = localStorage.getItem(WISHLIST_STORAGE_KEY);
-        if (wishlistJson) {
-            try {
-                return JSON.parse(wishlistJson);
-            } catch (err) {
-                console.error('Error parsing wishlist from LocalStorage:', err);
-                return [];
-            }
-        }
-        return [];
-    }
-
-    /**
-     * Save wishlist to LocalStorage
-     * @param {Array<string>} wishlist - Array of IDs of the wishlist
-     */
-    function saveWishlist(wishlist) {
-        try {
-            localStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(wishlist));
-        } catch (err) {
-            console.error('Error saving wishlist to LocalStorage:', err);
-        }
-    }
-
-    /**
-     * Add an ID to the wishlist
-     * @param {string} id - ID of the product to be added
-     */
-    function addToWishlist(id) {
-        const wishlist = getWishlist();
-        if (!wishlist.includes(id)) {
-            wishlist.push(id);
-            saveWishlist(wishlist);
-            // console.log(`ID ${id} added to wishlist. Current wishlist:`, wishlist);
-        }
-    }
-
-    /**
-     * Remove um ID da wishlist
-     * @param {string} id - ID of the product to be removed
-     */
-    function removeFromWishlist(id) {
-        const wishlist = getWishlist();
-        const index = wishlist.indexOf(id);
-        if (index > -1) {
-            wishlist.splice(index, 1);
-            saveWishlist(wishlist);
-            // console.log(`ID ${id} removed from wishlist. Current wishlist:`, wishlist);
-        }
-    }
-
-    /**
-     * Verifica se um ID está na wishlist
-     * @param {string} id - ID of the product to be verified
-     * @returns {boolean} True if the ID is in the wishlist
-     */
-    function isInWishlist(id) {
-        const wishlist = getWishlist();
-        return wishlist.includes(id);
+    // Import wishlist functions from global scope (loaded via wishlist.js script)
+    const { getWishlist, addToWishlist, removeFromWishlist, isInWishlist } = window.WishlistModule || {};
+    
+    // Safety check: ensure wishlist functions are available
+    if (!getWishlist || !addToWishlist || !removeFromWishlist || !isInWishlist) {
+        console.error('Wishlist module not loaded. Make sure wishlist.js is loaded before main.js');
+        return;
     }
 
     /**
@@ -111,16 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const wishlistButtons = document.querySelectorAll('.beon-showcase__wishlist-icon[data-wishlist-id]');
         const wishlist = getWishlist();
 
-        wishlistButtons.forEach((button, index) => {
+        wishlistButtons.forEach((button) => {
             const id = button.getAttribute('data-wishlist-id');
             
             if (id) {
                 // Apply the initial state based on the LocalStorage
                 updateButtonState(button, id);
-                
-                if (isInWishlist(id)) {
-                    console.log(`Button ${index + 1} (ID: ${id})  already in wishlist - applying is-active-wishlist class`);
-                }
 
                 // Add the event listener for the click (using once: false to allow multiple clicks)
                 button.addEventListener('click', function(event) {
@@ -131,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const wishlistId = getWishlistIdFromItem(this);
                     
                     if (!wishlistId) {
-                        console.error('does not have a data-wishlist-id');
+                        console.error('Wishlist button does not have a valid data-wishlist-id');
                         return;
                     }
                     
@@ -143,8 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         this.classList.add('is-active-wishlist');
                     }
                 });
-            } else {
-                console.warn(`Button ${index + 1} does not have a data-wishlist-id`);
             }
         });
     }
@@ -182,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const ratingContainer = document.createElement('div');
             ratingContainer.className = 'product-rating';
             
-            // create stars container
+            // Create stars container
             const starsContainer = document.createElement('div');
             starsContainer.className = 'stars-container';
             

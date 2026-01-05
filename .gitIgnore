@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+bn-frontend-test/src/css/*.css
+bn-frontend-test/src/css/*.css.map
+!bn-frontend-test/src/css/.gitkeep
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# vscode
+.vscode/

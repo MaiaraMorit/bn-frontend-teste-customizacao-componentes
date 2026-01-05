@@ -104,3 +104,92 @@ O projeto inclui um sistema de favoritos que utiliza o `localStorage` do navegad
   - Ao clicar no coração de um produto, ele é adicionado/removido da lista de favoritos
   - O estado visual do coração (ativo/inativo) é mantido mesmo após recarregar a página
   - Os favoritos são específicos por navegador e dispositivo
+
+### Sistema de Avaliações com Estrelas
+
+Implementação de um sistema visual de avaliações que converte notas numéricas em representação de estrelas:
+
+- **Renderização**: Converte notas de 0-5 em estrelas preenchidas, meio preenchidas ou vazias
+- **Integração**: Busca automaticamente elementos com a classe `.detail-notaMedia` e cria a visualização
+- **Contagem de Reviews**: Exibe o número de avaliações ao lado das estrelas
+
+### Tecnologias Utilizadas
+
+- **SASS**: Pré-processador CSS para organização modular e variáveis
+- **Tiny Slider**: Biblioteca para carousel de produtos
+- **ES6 Modules**: Sistema de módulos JavaScript para organização do código
+- **Jest**: Framework de testes unitários
+- **Babel**: Transpilador para compatibilidade com Node.js nos testes
+- **Live Server**: Servidor de desenvolvimento com hot reload
+
+#### Testes Unitários
+
+Implementação de testes focados no módulo `wishlist.js` que contém a lógica de negócio:
+- Testes de todas as funções principais
+- Testes de integração do fluxo completo
+- Mock do localStorage para isolamento dos testes
+
+O projeto inclui testes unitários utilizando Jest. Para executar os testes:
+
+```bash
+# Executar todos os testes
+npm test
+
+# Executar testes em modo watch (re-executa ao salvar arquivos)
+npm run test:watch
+
+# Executar testes com cobertura de código
+npm run test:coverage
+```
+
+### Cobertura de Testes
+
+Os testes cobrem:
+- ✅ Funções de manipulação do localStorage (`getWishlist`, `saveWishlist`)
+- ✅ Adição e remoção de itens da wishlist
+- ✅ Verificação de existência de itens
+- ✅ Tratamento de erros (JSON inválido, erros de storage)
+- ✅ Prevenção de duplicatas
+- ✅ Fluxo completo de integração
+
+### Estrutura dos Testes
+
+Os testes estão organizados em suites que cobrem:
+- **getWishlist**: Testes de leitura do localStorage
+- **saveWishlist**: Testes de escrita no localStorage
+- **addToWishlist**: Testes de adição de itens
+- **removeFromWishlist**: Testes de remoção de itens
+- **isInWishlist**: Testes de verificação
+- **Integration tests**: Testes do fluxo completo
+
+## Scripts Disponíveis
+- `npm run sass`: Compila e observa mudanças nos arquivos SCSS
+- `npm run dev`: Inicia servidor de desenvolvimento com live reload
+- `npm test`: Executa testes unitários
+- `npm run test:watch`: Executa testes em modo watch
+- `npm run test:coverage`: Executa testes e gera relatório de cobertura
+
+## Padrões de Código
+
+### JavaScript
+
+- **Comentários**: Todos os comentários estão em inglês para padronização
+- **JSDoc**: Funções documentadas com JSDoc para melhor autocomplete e documentação
+- **ES6+**: Uso de arrow functions, const/let, template literals, destructuring quando apropriado
+- **Sem console.log em produção**: Apenas `console.error` para erros críticos
+
+### SCSS
+
+- **Modularidade**: Estilos organizados em arquivos separados por responsabilidade
+- **Variáveis**: Cores e valores reutilizáveis definidos em `_variables.scss`
+- **BEM**: Convenção de nomenclatura BEM para classes CSS
+- **Responsividade**: Media queries organizadas em arquivo dedicado
+
+## Melhorias Futuras Sugeridas
+
+- [ ] Sincronização de wishlist entre abas usando `storage` event
+- [ ] Adicionar mais breakpoints responsivos (tablets, telas grandes)
+- [ ] Implementar build process para minificação e otimização
+- [ ] Adicionar testes para funções de manipulação do DOM
+- [ ] Melhorar acessibilidade (aria-labels, keyboard navigation)
+- [ ] Implementar feedback visual para erros (toast notifications)
